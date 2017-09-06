@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JSCore", "JavaScript\JSCore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeForDoNet", "WebKit4Net2\ChromeForDoNet.csproj", "{1348F156-2EF0-4CE0-993F-B957E0A73D86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeInokDemo", "ChromeInokDemo\ChromeInokDemo.csproj", "{510F271D-4055-4A01-879E-6FC624994683}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeInvokDemo", "ChromeInokDemo\ChromeInvokDemo.csproj", "{510F271D-4055-4A01-879E-6FC624994683}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
