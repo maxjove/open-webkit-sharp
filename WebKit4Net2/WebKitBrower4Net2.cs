@@ -16,16 +16,90 @@ namespace ChromeForDoNet
             
         }
         public WebKitBrower4Net2()
-            :base()
         {
+            this.AllowNewWindows = true;
+
             this.PopupCreated -= Wb_PopupCreated;
             this.CloseWindowRequest -= Wb_CloseWindowRequest;
             this.ShowJavaScriptAlertPanel -= Wb_ShowJavaScriptAlertPanel;
+            this.NewWindowCreated -= WebKitBrower4Net2_NewWindowCreated;
+
             this.PopupCreated += Wb_PopupCreated;
             this.CloseWindowRequest += Wb_CloseWindowRequest;
             this.ShowJavaScriptAlertPanel += Wb_ShowJavaScriptAlertPanel;
+            this.NewWindowCreated += WebKitBrower4Net2_NewWindowCreated;
+            this.NewWindowRequest += WebKitBrower4Net2_NewWindowRequest;
+            this.CloseWindowRequest += WebKitBrower4Net2_CloseWindowRequest;
+           
            
         }
+
+        private string urlnewindowsRst = "";
+        private void WebKitBrower4Net2_NewWindowRequest(object sender, NewWindowRequestEventArgs e)
+        {
+            if (urlnewindowsRst == e.Url)
+            {
+                urlnewindowsRst = "";
+            }
+            else
+            {
+                if (e.Url != null)
+                    urlnewindowsRst = e.Url;
+            }
+        
+         
+            //throw new NotImplementedException();
+        }
+
+        private void WebKitBrower4Net2_NewWindowCreated(object sender, NewWindowCreatedEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(urlnewindowsRst))
+                return;
+            if (urlnewindowsRst.StartsWith("ttp:"))
+                urlnewindowsRst = "h" + urlnewindowsRst;
+            Form f = new Form();
+            f.Text = "NW";
+            if (e.WebKitBrowser.Url != null && !string.IsNullOrEmpty(e.WebKitBrowser.Url.ToString()))
+            {
+                f.Text = "NW:" + e.WebKitBrowser.Url.ToString();
+                this.urlnewindowsRst= e.WebKitBrowser.Url.ToString();
+            }
+            else
+                f.Text = "NW:" + this.urlnewindowsRst;
+            f.WindowState = FormWindowState.Maximized;
+            f.StartPosition = FormStartPosition.CenterParent;
+            f.ShowIcon = false;
+            f.ShowInTaskbar = false;
+            WebKitBrowser wb = e.WebKitBrowser;
+
+            wb.AllowDownloads = true;
+            wb.Visible = true;
+            wb.Name = "browser";
+            wb.Dock = DockStyle.Fill;
+
+            wb.DocumentTitleChanged -= new EventHandler(wb_DocumentTitleChanged);
+            wb.FaviconAvailable -= new FaviconAvailable(wb_FaviconAvaiable);
+            wb.CloseWindowRequest -= Wb_CloseWindowRequest1;
+
+            wb.DocumentTitleChanged += new EventHandler(wb_DocumentTitleChanged);
+            wb.FaviconAvailable += new FaviconAvailable(wb_FaviconAvaiable);
+            wb.CloseWindowRequest += Wb_CloseWindowRequest1;
+
+            f.Controls.Add(wb);
+            wb.Navigate(urlnewindowsRst);
+            f.ShowDialog();
+            //urlnewindowsRst = "";
+            //throw new NotImplementedException();
+        }
+
+        private void WebKitBrower4Net2_CloseWindowRequest(object sender, EventArgs e)
+        {
+            WebKitBrowser wb = (sender as WebKitBrowser);
+            //throw new NotImplementedException();
+        }
+
+       
 
         private void Wb_ShowJavaScriptAlertPanel(object sender, ShowJavaScriptAlertPanelEventArgs e)
         {
@@ -42,20 +116,33 @@ namespace ChromeForDoNet
 
         private void Wb_PopupCreated(object sender, NewWindowCreatedEventArgs e)
         {
+            if (string.IsNullOrEmpty(e.WebKitBrowser.Url.ToString()))
+                return;
             //throw new NotImplementedException();
             Form f = new Form();
-
-            f.Show();
+            f.Text = e.WebKitBrowser.Url.ToString();
+            f.WindowState = FormWindowState.Maximized;
+            f.StartPosition = FormStartPosition.CenterParent;
+            f.ShowIcon = false;
+            f.ShowInTaskbar = false;
             WebKitBrowser wb = e.WebKitBrowser;
             wb.AllowDownloads = true;
             wb.Visible = true;
             wb.Name = "browser";
             wb.Dock = DockStyle.Fill;
+            wb.DocumentTitleChanged -= new EventHandler(wb_DocumentTitleChanged);
+            wb.FaviconAvailable -= new FaviconAvailable(wb_FaviconAvaiable);
+            wb.CloseWindowRequest -= Wb_CloseWindowRequest1;
             wb.DocumentTitleChanged += new EventHandler(wb_DocumentTitleChanged);
             wb.FaviconAvailable += new FaviconAvailable(wb_FaviconAvaiable);
             wb.CloseWindowRequest += Wb_CloseWindowRequest1;
+           
             f.Controls.Add(wb);
+            f.ShowDialog();
+            f.Close();
         }
+
+        
 
         private void Wb_CloseWindowRequest1(object sender, EventArgs e)
         {
@@ -70,12 +157,16 @@ namespace ChromeForDoNet
 
         void wb_DocumentTitleChanged(object sender, EventArgs e)
         {
-            ((Form)((WebKitBrowser)sender).Parent).Text = ((WebKitBrowser)sender).DocumentTitle;
+            if (((WebKitBrowser)sender).Parent != null)
+            {
+                ((Form)((WebKitBrowser)sender).Parent).Text = ((WebKitBrowser)sender).DocumentTitle+" :" +((WebKitBrowser)sender).Url;
+            }
         }
 
         void wb_FaviconAvaiable(object sender, FaviconAvailableEventArgs e)
         {
-            ((Form)((WebKitBrowser)sender).Parent).Icon = e.Favicon;
+            if (((WebKitBrowser)sender).Parent != null)
+                ((Form)((WebKitBrowser)sender).Parent).Icon = e.Favicon;
         }
        static void  ResaleFile(object stat)
         {

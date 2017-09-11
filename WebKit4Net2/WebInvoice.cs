@@ -11,6 +11,7 @@ namespace ChromeForDoNet
 			try
 			{
                 frmSYS_WebBrowerChrome frmSYS_WebBrowerChrome = new frmSYS_WebBrowerChrome();
+                frmSYS_WebBrowerChrome.Text = "Chrome2:" + url;
                 bool flag = height >= 99999 && width >= 99999;
                 if (flag)
                 {
