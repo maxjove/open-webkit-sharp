@@ -35,43 +35,30 @@ namespace ChromeForDoNet
         }
 
         private string urlnewindowsRst = "";
+        private string urloldwindwos = "";
         private void WebKitBrower4Net2_NewWindowRequest(object sender, NewWindowRequestEventArgs e)
         {
-            if (urlnewindowsRst == e.Url)
-            {
-                urlnewindowsRst = "";
-            }
-            else
-            {
+            //if (urlnewindowsRst == e.Url)
+            //{
+            //    urlnewindowsRst = "";
+            //}
+            //else
+            //{
                 if (e.Url != null)
                     urlnewindowsRst = e.Url;
-            }
-        
-         
-            //throw new NotImplementedException();
-        }
-
-        private void WebKitBrower4Net2_NewWindowCreated(object sender, NewWindowCreatedEventArgs e)
-        {
-
-            if (string.IsNullOrEmpty(urlnewindowsRst))
+            //}
+            if (!IsValidUrl(urlnewindowsRst))
                 return;
-            if (urlnewindowsRst.StartsWith("ttp:"))
-                urlnewindowsRst = "h" + urlnewindowsRst;
+
             Form f = new Form();
             f.Text = "NW";
-            if (e.WebKitBrowser.Url != null && !string.IsNullOrEmpty(e.WebKitBrowser.Url.ToString()))
-            {
-                f.Text = "NW:" + e.WebKitBrowser.Url.ToString();
-                this.urlnewindowsRst= e.WebKitBrowser.Url.ToString();
-            }
-            else
-                f.Text = "NW:" + this.urlnewindowsRst;
-            f.WindowState = FormWindowState.Maximized;
+           
+            f.Text = "NW:" + this.urlnewindowsRst;
+            //f.WindowState = FormWindowState.Maximized;
             f.StartPosition = FormStartPosition.CenterParent;
             f.ShowIcon = false;
-            f.ShowInTaskbar = false;
-            WebKitBrowser wb = e.WebKitBrowser;
+            //f.ShowInTaskbar = false;
+            WebKitBrowser wb = new WebKitBrowser();
 
             wb.AllowDownloads = true;
             wb.Visible = true;
@@ -88,9 +75,63 @@ namespace ChromeForDoNet
 
             f.Controls.Add(wb);
             wb.Navigate(urlnewindowsRst);
-            f.ShowDialog();
-            //urlnewindowsRst = "";
+            f.Show();
+
+
             //throw new NotImplementedException();
+        }
+        static bool IsValidUrl(string urlString)
+        {
+            Uri uri;
+            return Uri.TryCreate(urlString, UriKind.Absolute, out uri)
+                && (uri.Scheme == Uri.UriSchemeHttp
+                 || uri.Scheme == Uri.UriSchemeHttps
+                 || uri.Scheme == Uri.UriSchemeFtp
+                 || uri.Scheme == Uri.UriSchemeMailto
+                    /*...*/);
+        }
+
+        private void WebKitBrower4Net2_NewWindowCreated(object sender, NewWindowCreatedEventArgs e)
+        {
+           // urlnewindowsRst = "";
+            //    if (!IsValidUrl(urlnewindowsRst))
+            //        return;
+
+            //    Form f = new Form();
+            //    f.Text = "NW";
+            //    if (e.WebKitBrowser.Url != null && !string.IsNullOrEmpty(e.WebKitBrowser.Url.ToString()))
+            //    {
+            //        f.Text = "NW:" + e.WebKitBrowser.Url.ToString();
+            //        this.urlnewindowsRst = e.WebKitBrowser.Url.ToString();
+            //    }
+            //    else
+            //        f.Text = "NW:" + this.urlnewindowsRst;
+            //    //f.WindowState = FormWindowState.Maximized;
+            //    f.StartPosition = FormStartPosition.CenterParent;
+            //    f.ShowIcon = false;
+            //    //f.ShowInTaskbar = false;
+            //    WebKitBrowser wb = e.WebKitBrowser;
+
+            //    wb.AllowDownloads = true;
+            //    wb.Visible = true;
+            //    wb.Name = "browser";
+            //    wb.Dock = DockStyle.Fill;
+
+            //    wb.DocumentTitleChanged -= new EventHandler(wb_DocumentTitleChanged);
+            //    wb.FaviconAvailable -= new FaviconAvailable(wb_FaviconAvaiable);
+            //    wb.CloseWindowRequest -= Wb_CloseWindowRequest1;
+
+            //    wb.DocumentTitleChanged += new EventHandler(wb_DocumentTitleChanged);
+            //    wb.FaviconAvailable += new FaviconAvailable(wb_FaviconAvaiable);
+            //    wb.CloseWindowRequest += Wb_CloseWindowRequest1;
+
+            //    f.Controls.Add(wb);
+            //    wb.Navigate(urlnewindowsRst);
+            //    f.ShowDialog();
+            //    // wb.Navigate(urlnewindowsRst);
+
+            //    //urlnewindowsRst = "";
+            //    //throw new NotImplementedException();
         }
 
         private void WebKitBrower4Net2_CloseWindowRequest(object sender, EventArgs e)
@@ -116,9 +157,9 @@ namespace ChromeForDoNet
 
         private void Wb_PopupCreated(object sender, NewWindowCreatedEventArgs e)
         {
-            if (string.IsNullOrEmpty(e.WebKitBrowser.Url.ToString()))
+            if (e.WebKitBrowser.Url==null || !IsValidUrl(e.WebKitBrowser.Url.ToString()))
                 return;
-            //throw new NotImplementedException();
+           
             Form f = new Form();
             f.Text = e.WebKitBrowser.Url.ToString();
             f.WindowState = FormWindowState.Maximized;

@@ -1264,11 +1264,15 @@ namespace WebKit
 
         void policyDelegate_NewWindowRequestUrlAvailable(string url)
         {
-            if (!string.IsNullOrEmpty(url))
-            {
-                newwindowurl = url;
-            }
-            NewWindowRequest(this, new NewWindowRequestEventArgs(url)); // url and request seem to be empty in UiDelegate.createWebViewWithRequest
+            //if (!string.IsNullOrEmpty(url))
+            //{
+            //    newwindowurl = url;
+            //}
+            //else
+            //    newwindowurl = "";
+            NewWindowRequest(this, new NewWindowRequestEventArgs(url));
+            NewWindowCreated(this, new NewWindowCreatedEventArgs(this));
+            // NewWindowRequest(this, new NewWindowRequestEventArgs(url)); // url and request seem to be empty in UiDelegate.createWebViewWithRequest
         }
 
         #region Browser Preferences
@@ -1843,8 +1847,8 @@ namespace WebKit
             }
             else
             {
-                NewWindowRequest(this, args);
-                NewWindowCreated(this, new NewWindowCreatedEventArgs(b));
+                //NewWindowRequest(this, args);
+                //NewWindowCreated(this, new NewWindowCreatedEventArgs(b));
             }
             //if (this.Focused == false || ElementAtPoint(this.PointToClient(Cursor.Current.HotSpot)).Type == ElementType.Body || (GetCurrentElement().Type != ElementType.LinkOrUknown || GetCurrentElement().TagName == "BODY" || GetCurrentElement().TagName == "IFRAME" || GetCurrentElement() == null && GetCurrentElement().TagName != "OBJECT"))
             //    {
