@@ -22,7 +22,7 @@ namespace ChromeInokDemo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ChromeForDoNet.WebInvoice.CallWebBrower("", 99999, 99999);
+            ChromeForDoNet.WebInvoice.CallWebBrower("http://ultrasounds.com/", 99999, 99999);
         }
     }
 }

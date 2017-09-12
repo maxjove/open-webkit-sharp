@@ -54,7 +54,7 @@ namespace ChromeForDoNet
             f.Text = "NW";
            
             f.Text = "NW:" + this.urlnewindowsRst;
-            //f.WindowState = FormWindowState.Maximized;
+            f.WindowState = FormWindowState.Maximized;
             f.StartPosition = FormStartPosition.CenterParent;
             f.ShowIcon = false;
             //f.ShowInTaskbar = false;
