@@ -27,6 +27,12 @@ namespace ChromeForDoNet
             }
             set
             {
+                if (File.Exists(value))
+                {
+                    string tmpurl = new Uri(value, UriKind.Absolute).AbsoluteUri;
+                    this._url = tmpurl;
+                }
+                else
                 this._url = value;
             }
         }
