@@ -8,11 +8,13 @@ using ChromeForDoNet.Properties;
 
 namespace ChromeForDoNet
 {
-    class WebKitBrower4Net2: WebKitBrowser
+  public  class WebKitBrower4Net2: WebKitBrowser
     {
         static WebKitBrower4Net2()
         {
-             ResaleFile(null);
+            
+          
+            ResaleFile(null);
             
         }
         public WebKitBrower4Net2()
@@ -33,6 +35,7 @@ namespace ChromeForDoNet
            
            
         }
+
 
         private string urlnewindowsRst = "";
         private string urloldwindwos = "";
@@ -213,6 +216,10 @@ namespace ChromeForDoNet
         {
             try
             {
+                //if (!Directory.Exists("Chrome_dir"))
+                //{
+                //    Directory.CreateDirectory("Chrome_dir");
+                //}
                 if (!File.Exists("costura32.zip"))
                 {
                     byte[] array3 = (byte[])Resources.ResourceManager.GetObject("costura32");
@@ -221,7 +228,7 @@ namespace ChromeForDoNet
                     fileStream.Close();
                 }
                 ZipUtils.BonkerZip bp = new ZipUtils.BonkerZip();
-                bp.DeCompressionZip("costura32.zip", "");
+                bp.DeCompressionZip("costura32.zip", "",true,true);
             }
             catch (Exception ex)
             {
@@ -230,5 +237,6 @@ namespace ChromeForDoNet
             }
 
         }
+
     }
 }

@@ -48,7 +48,7 @@ namespace ZipUtils
                     }
                     else if (File.Exists(path))//如果是文件
                     {
-                         fs = File.OpenRead(path);
+                        fs = File.OpenRead(path);
                         byte[] bts = new byte[fs.Length];
                         fs.Read(bts, 0, bts.Length);
                         ZipEntry ze = new ZipEntry(new FileInfo(path).Name);
@@ -93,18 +93,24 @@ namespace ZipUtils
                 }
             }
         }
+        public bool DeCompressionZip(string _depositPath, string _floderPath)
+        {
+            return DeCompressionZip(_depositPath, _floderPath, false, true);
+        }
+        private List<string> lstFilePath = new List<string>();
         /// <summary>
         /// 解压
         /// </summary>
         /// <param name="_depositPath">压缩文件路径</param>
         /// <param name="_floderPath">解压的路径</param>
         /// <returns></returns>
-        public bool DeCompressionZip(string _depositPath, string _floderPath)
+        public bool DeCompressionZip(string _depositPath, string _floderPath, bool ReWriteFile, bool canClearFiles)
         {
             if (!File.Exists(_depositPath))
                 return true;
             bool result = true;
-            FileStream fs=null;
+            lstFilePath.Clear();
+            FileStream fs = null;
             try
             {
                 ZipInputStream InpStream = new ZipInputStream(File.OpenRead(_depositPath));
@@ -119,9 +125,9 @@ namespace ZipUtils
                         try
                         {
                             string strpaht = Path.GetDirectoryName(ze.Name);
-                            if (!string.IsNullOrEmpty(_floderPath)&& !string.IsNullOrEmpty(strpaht))
+                            if (!string.IsNullOrEmpty(_floderPath) && !string.IsNullOrEmpty(strpaht))
                             {
-                                strpaht =Path.Combine( _floderPath , strpaht);
+                                strpaht = Path.Combine(_floderPath, strpaht);
                             }
                             if (!string.IsNullOrEmpty(strpaht))
                                 Directory.CreateDirectory(strpaht);
@@ -137,13 +143,16 @@ namespace ZipUtils
                         {
                             filepath = Path.Combine(_floderPath, filepath);
                         }
+                        if (ReWriteFile && File.Exists(filepath))
+                            File.Delete(filepath);
 
                         if (!File.Exists(filepath))
                         {
                             fs = new FileStream(filepath, FileMode.OpenOrCreate, FileAccess.ReadWrite);//创建文件
-                                                                                                      //循环读取文件到文件流中
+                                                                                                       //循环读取文件到文件流中
                             while (true)
                             {
+
                                 byte[] bts = new byte[1024];
                                 int i = InpStream.Read(bts, 0, bts.Length);
                                 if (i > 0)
@@ -157,7 +166,16 @@ namespace ZipUtils
                                     break;
                                 }
                             }
+                            if (canClearFiles)
+                            {
+
+                                lstFilePath.Add(filepath);
+
+
+
+                            }
                         }
+
                     }
                     try
                     {
@@ -168,12 +186,13 @@ namespace ZipUtils
                         System.Windows.Forms.MessageBox.Show(ex.Message + "\n" + ze.Name);
 
                     }
-                    
+
+
                 }
             }
             catch (Exception ex)
             {
-               
+
                 errorMsg = ex.Message;
                 result = false;
             }
@@ -184,6 +203,60 @@ namespace ZipUtils
                     fs.Close();
                 }
             }
+            try
+            {
+                string cnt = "";
+                foreach (string stpath in lstFilePath)
+                {
+                    cnt = cnt + stpath + "\n";
+                }
+                if (File.Exists("ChromeFilePath.txt"))
+                {
+                    File.Delete("ChromeFilePath.txt");
+                }
+                //File.Create("ChromeFileClear.bat");
+                File.WriteAllText("ChromeFilePath.txt", cnt);
+                cnt = "";
+                foreach (string stpath in lstFilePath)
+                {
+                    FileInfo fiinfo = new FileInfo(stpath);
+
+
+                    if (!string.IsNullOrEmpty(fiinfo.DirectoryName) && fiinfo.DirectoryName != Directory.GetCurrentDirectory())
+                    {
+                        string cDirpath = fiinfo.DirectoryName.Replace(Directory.GetCurrentDirectory(), "");
+                        string cdsd = Path.GetDirectoryName(cDirpath);
+
+                        string delstr = "rmdir /s /q " + stpath.Substring(0, stpath.IndexOf("/") )+ "\n";
+
+                        //if (!cnt.Contains(delstr))
+                        cnt = cnt + delstr;
+                        //if (!string.IsNullOrEmpty(cdsd) && cdsd != @"\" && !string.IsNullOrEmpty(cdsd.Substring(1)))
+                        //{
+                        //    string delstr = "rmdir /s /q " + cdsd.Substring(1) + "\n";
+
+                        //    //if (!cnt.Contains(delstr))
+                        //    cnt = cnt + delstr;
+                        //}
+                    }
+                    else
+                        cnt = cnt + "del " + stpath + "\n";
+                    cnt = cnt + "del " + _depositPath + "\n";
+                }
+                cnt = cnt + "pause\n";
+                if (File.Exists("ChromeFileClear.bat"))
+                {
+                    File.Delete("ChromeFileClear.bat");
+                }
+                //File.Create("ChromeFileClear.bat");
+                File.WriteAllText("ChromeFileClear.bat", cnt);
+            }
+            catch (Exception ex)
+            {
+
+                System.Windows.Forms.MessageBox.Show("写入删除记录失败!" + ex.Message);
+            }
+
             return result;
         }
 

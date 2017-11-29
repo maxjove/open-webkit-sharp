@@ -66,5 +66,11 @@ namespace ChromeForDoNet
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WebKitBrowser wb = this.webKitBrower4Net21;
+            this.URL = textBox1.Text;
+            wb.Navigate(this._url);
+        }
     }
 }
