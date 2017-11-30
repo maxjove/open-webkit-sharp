@@ -53,7 +53,10 @@ namespace WebKit
             if (HasBeenInitialized() == false)
             {
                 System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\OpenWebKitSharp Strings\\");
-                SetLanguageToEnglish(); // Set the strings to the default English strings.
+                if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN")
+                    SetLanguageToChina();
+                else
+                    SetLanguageToEnglish(); // Set the strings to the default English strings.
             }
         }
 
@@ -119,6 +122,10 @@ namespace WebKit
         public static void SetLanguageToEnglish()
         {
             SetLanguageFromINIFile(System.Windows.Forms.Application.StartupPath + @"\LanguageLoader.resources\English.ini");
+        }
+        public static void SetLanguageToChina()
+        {
+            SetLanguageFromINIFile(System.Windows.Forms.Application.StartupPath + @"\LanguageLoader.resources\China.ini");
         }
 
         /// <summary>

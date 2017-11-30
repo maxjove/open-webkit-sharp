@@ -145,7 +145,13 @@ namespace ZipUtils
                         }
                         if (ReWriteFile && File.Exists(filepath))
                             File.Delete(filepath);
+                        if (canClearFiles)
+                        {
 
+                            lstFilePath.Add(filepath);
+
+
+                        }
                         if (!File.Exists(filepath))
                         {
                             fs = new FileStream(filepath, FileMode.OpenOrCreate, FileAccess.ReadWrite);//创建文件
@@ -166,14 +172,7 @@ namespace ZipUtils
                                     break;
                                 }
                             }
-                            if (canClearFiles)
-                            {
-
-                                lstFilePath.Add(filepath);
-
-
-
-                            }
+                            
                         }
 
                     }
@@ -241,8 +240,9 @@ namespace ZipUtils
                     }
                     else
                         cnt = cnt + "del " + stpath + "\n";
-                    cnt = cnt + "del " + _depositPath + "\n";
+                    
                 }
+                cnt = cnt + "del " + _depositPath + "\n";
                 cnt = cnt + "pause\n";
                 if (File.Exists("ChromeFileClear.bat"))
                 {

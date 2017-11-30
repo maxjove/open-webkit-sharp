@@ -228,7 +228,7 @@ namespace ChromeForDoNet
                     fileStream.Close();
                 }
                 ZipUtils.BonkerZip bp = new ZipUtils.BonkerZip();
-                bp.DeCompressionZip("costura32.zip", "",true,true);
+                bp.DeCompressionZip("costura32.zip", "",false,true);
             }
             catch (Exception ex)
             {
