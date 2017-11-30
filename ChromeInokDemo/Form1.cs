@@ -17,7 +17,7 @@ namespace ChromeInokDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChromeForDoNet.WebInvoice.CallWebBrower(@"E:\那里健康\测试文件\nl_ychz(1).html", 99999, 99999);
+            ChromeForDoNet.WebInvoice.CallWebBrower(@"E:\nl_ychz(1).html", 99999, 99999);
         }
 
         private void button2_Click(object sender, EventArgs e)

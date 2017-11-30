@@ -46,7 +46,7 @@
             this.webKitBrower4Net21.Name = "webKitBrower4Net21";
             this.webKitBrower4Net21.Password = null;
             this.webKitBrower4Net21.PrivateBrowsing = false;
-            this.webKitBrower4Net21.Size = new System.Drawing.Size(996, 476);
+            this.webKitBrower4Net21.Size = new System.Drawing.Size(996, 505);
             this.webKitBrower4Net21.TabIndex = 0;
             this.webKitBrower4Net21.Url = null;
             this.webKitBrower4Net21.Username = null;
@@ -62,6 +62,8 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.textBox1);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
+            this.splitContainer1.Panel1Collapsed = true;
             // 
             // splitContainer1.Panel2
             // 
@@ -85,7 +87,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "导航";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

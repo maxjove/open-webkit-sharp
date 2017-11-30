@@ -33,7 +33,12 @@ namespace ChromeForDoNet
                     this._url = tmpurl;
                 }
                 else
-                this._url = value;
+                {
+                    if (value.StartsWith("http") || value.StartsWith("www"))
+                        this._url = value;
+                    else
+                        this.URL =Application.StartupPath+ @"\404.html";
+                }
             }
         }
         public frmSYS_WebBrowerChrome()
@@ -51,6 +56,7 @@ namespace ChromeForDoNet
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.splitContainer1.Panel1.Hide();
             WebKitBrowser wb = this.webKitBrower4Net21;
 
             if (string.IsNullOrEmpty(this._url))
@@ -71,6 +77,11 @@ namespace ChromeForDoNet
             WebKitBrowser wb = this.webKitBrower4Net21;
             this.URL = textBox1.Text;
             wb.Navigate(this._url);
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
