@@ -14,7 +14,7 @@ using DevExpress.XtraEditors;
 
 namespace ChromeForDoNet
 {
-    public partial class frmSYS_WebBrowerChrome : XtraForm
+    public partial class ChromeFrm : XtraForm
     {
 
        
@@ -29,25 +29,34 @@ namespace ChromeForDoNet
             {
                 if (File.Exists(value))
                 {
-                    string tmpurl = new Uri(value, UriKind.Absolute).AbsoluteUri;
+                    string tmpurl = new Uri(value, UriKind.RelativeOrAbsolute).AbsoluteUri;
                     this._url = tmpurl;
                 }
                 else
                 {
                     if (value.StartsWith("http") || value.StartsWith("www"))
                         this._url = value;
+                    else if (value.StartsWith("file:"))
+                    {
+                        Uri rn = new Uri(value, UriKind.RelativeOrAbsolute);
+                        if (!File.Exists(rn.LocalPath))
+                        {
+                            this.URL = Application.StartupPath + @"\404.html";
+                        }
+
+                    }
                     else
-                        this.URL =Application.StartupPath+ @"\404.html";
+                        this.URL = Application.StartupPath + @"\404.html";
                 }
             }
         }
-        public frmSYS_WebBrowerChrome()
+        public ChromeFrm()
         {
             this._url = "";
             InitializeComponent();
 
         }
-        public frmSYS_WebBrowerChrome(string url)
+        public ChromeFrm(string url)
         {
             this._url = url;
             InitializeComponent();

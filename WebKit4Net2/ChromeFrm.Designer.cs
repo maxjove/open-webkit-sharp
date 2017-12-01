@@ -1,6 +1,6 @@
 ﻿namespace ChromeForDoNet
 {
-    partial class frmSYS_WebBrowerChrome
+    partial class ChromeFrm
     {
         /// <summary>
         /// Required designer variable.
