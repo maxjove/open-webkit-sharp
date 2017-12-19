@@ -27,9 +27,12 @@ namespace ChromeForDoNet
             }
             set
             {
+               
                 if (File.Exists(value))
                 {
+                   
                     string tmpurl = new Uri(value, UriKind.RelativeOrAbsolute).AbsoluteUri;
+                    
                     this._url = tmpurl;
                 }
                 else
@@ -38,11 +41,15 @@ namespace ChromeForDoNet
                         this._url = value;
                     else if (value.StartsWith("file:"))
                     {
+                        
                         Uri rn = new Uri(value, UriKind.RelativeOrAbsolute);
                         if (!File.Exists(rn.LocalPath))
                         {
                             this.URL = Application.StartupPath + @"\404.html";
                         }
+                        else
+                            this._url = value;
+                        
 
                     }
                     else
