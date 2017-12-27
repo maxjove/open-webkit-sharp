@@ -59,15 +59,5 @@ namespace ChromeForDoNet.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] costura32 {
-            get {
-                object obj = ResourceManager.GetObject("costura32", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

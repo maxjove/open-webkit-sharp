@@ -143,8 +143,10 @@ namespace ZipUtils
                         {
                             filepath = Path.Combine(_floderPath, filepath);
                         }
-                        if (ReWriteFile && File.Exists(filepath))
+                        if ( ReWriteFile && File.Exists(filepath))
                             File.Delete(filepath);
+                        
+
                         if (canClearFiles)
                         {
 
@@ -207,6 +209,8 @@ namespace ZipUtils
                 string cnt = "";
                 foreach (string stpath in lstFilePath)
                 {
+                    if (stpath.StartsWith("DevExpress"))
+                        continue;
                     cnt = cnt + stpath + "\n";
                 }
                 if (File.Exists("ChromeFilePath.txt"))
@@ -218,6 +222,8 @@ namespace ZipUtils
                 cnt = "";
                 foreach (string stpath in lstFilePath)
                 {
+                    if (stpath.StartsWith("DevExpress"))
+                        continue;
                     FileInfo fiinfo = new FileInfo(stpath);
 
 

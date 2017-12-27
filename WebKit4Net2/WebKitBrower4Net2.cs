@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using WebKit;
 using ChromeForDoNet.Properties;
+using ZipUtils;
 
 namespace ChromeForDoNet
 {
@@ -12,8 +13,13 @@ namespace ChromeForDoNet
     {
         static WebKitBrower4Net2()
         {
-            
-          
+            if (File.Exists("OpenWebKitSharp.manifest"))
+            {
+                File.Delete("OpenWebKitSharp.manifest");
+            }
+            fileCutCombine.ComFile4Chrome();
+
+
            ResaleFile(null);
             
         }

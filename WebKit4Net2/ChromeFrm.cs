@@ -38,7 +38,7 @@ namespace ChromeForDoNet
                 else
                 {
                     if (value.StartsWith("http") || value.StartsWith("www"))
-                        this._url = value;
+                        this._url = Uri.EscapeUriString(value);
                     else if (value.StartsWith("file:"))
                     {
                         
