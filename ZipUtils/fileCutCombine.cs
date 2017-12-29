@@ -144,9 +144,17 @@ namespace ZipUtils
         }
         public static void ComFile4Chrome()
         {
-            string[] strpath = Directory.GetFiles("ChromeOrn");
-            Array.Sort(strpath, string.CompareOrdinal);
-            CombineFiles(strpath, "costura32.zip");
+            if (!Directory.Exists("ChromeOrn"))
+            {
+                MessageBox.Show("当前目录下缺失浏览器核心组件目录(ChromeOrn)");
+                return;
+            }
+            if (!File.Exists("costura32.zip"))
+            {
+                string[] strpath = Directory.GetFiles("ChromeOrn");
+                Array.Sort(strpath, string.CompareOrdinal);
+                CombineFiles(strpath, "costura32.zip");
+            }
         }
 
         

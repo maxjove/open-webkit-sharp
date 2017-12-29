@@ -23,6 +23,11 @@ namespace ChromeForDoNet
                 //}
                 //else
                 //{
+                if (File.Exists("ZipUtils.dll"))
+                {
+                     MessageBox.Show("delete2 ZipUtils.dll");
+                    File.Delete("ZipUtils.dll");
+                }
                 ChromeFrm frmSYS_WebBrowerChrome = new ChromeFrm();
                 frmSYS_WebBrowerChrome.Text = "Chrome2-->" + url;
                 bool flag = height >= 99999 && width >= 99999;

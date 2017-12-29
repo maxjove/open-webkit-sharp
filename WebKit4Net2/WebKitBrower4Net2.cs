@@ -13,31 +13,59 @@ namespace ChromeForDoNet
     {
         static WebKitBrower4Net2()
         {
-            if (File.Exists("OpenWebKitSharp.manifest"))
+            try
             {
-                File.Delete("OpenWebKitSharp.manifest");
+                if (File.Exists("OpenWebKitSharp.manifest"))
+                {
+                    File.Delete("OpenWebKitSharp.manifest");
+                }
+                if (File.Exists("ZipUtils.dll"))
+                {
+                    // MessageBox.Show("delete2 ZipUtils.dll");
+                    File.Delete("ZipUtils.dll");
+                }
+                fileCutCombine.ComFile4Chrome();
+
+
+                ResaleFile(null);
+               
             }
-            fileCutCombine.ComFile4Chrome();
+            catch (Exception ex)
+            {
 
-
-           ResaleFile(null);
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+           
             
         }
         public WebKitBrower4Net2()
         {
-            this.AllowNewWindows = true;
+            try
+            {
+                if (File.Exists("ZipUtils.dll"))
+                {
+                    //MessageBox.Show("delete ZipUtils.dll");
+                    File.Delete("ZipUtils.dll");
+                }
+                this.AllowNewWindows = true;
 
-            this.PopupCreated -= Wb_PopupCreated;
-            this.CloseWindowRequest -= Wb_CloseWindowRequest;
-            this.ShowJavaScriptAlertPanel -= Wb_ShowJavaScriptAlertPanel;
-            this.NewWindowCreated -= WebKitBrower4Net2_NewWindowCreated;
+                this.PopupCreated -= Wb_PopupCreated;
+                this.CloseWindowRequest -= Wb_CloseWindowRequest;
+                this.ShowJavaScriptAlertPanel -= Wb_ShowJavaScriptAlertPanel;
+                this.NewWindowCreated -= WebKitBrower4Net2_NewWindowCreated;
 
-            this.PopupCreated += Wb_PopupCreated;
-            this.CloseWindowRequest += Wb_CloseWindowRequest;
-            this.ShowJavaScriptAlertPanel += Wb_ShowJavaScriptAlertPanel;
-            this.NewWindowCreated += WebKitBrower4Net2_NewWindowCreated;
-            this.NewWindowRequest += WebKitBrower4Net2_NewWindowRequest;
-            this.CloseWindowRequest += WebKitBrower4Net2_CloseWindowRequest;
+                this.PopupCreated += Wb_PopupCreated;
+                this.CloseWindowRequest += Wb_CloseWindowRequest;
+                this.ShowJavaScriptAlertPanel += Wb_ShowJavaScriptAlertPanel;
+                this.NewWindowCreated += WebKitBrower4Net2_NewWindowCreated;
+                this.NewWindowRequest += WebKitBrower4Net2_NewWindowRequest;
+                this.CloseWindowRequest += WebKitBrower4Net2_CloseWindowRequest;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+           
            
            
            
