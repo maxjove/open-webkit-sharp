@@ -143,8 +143,31 @@ namespace ZipUtils
                         {
                             filepath = Path.Combine(_floderPath, filepath);
                         }
-                        if ( ReWriteFile && File.Exists(filepath))
-                            File.Delete(filepath);
+                        if (ReWriteFile && File.Exists(filepath))
+                        {
+                            try
+                            {
+                                FileInfo fi = new FileInfo(filepath);
+
+                                if (fi.IsReadOnly)
+
+                                {
+
+                                    fi.IsReadOnly = false; //更改文件的只读属性
+                                    
+
+                                }
+                                if (Path.GetExtension(filepath).ToLower().Trim()==".dll" && !filepath.StartsWith("DevExpress."))
+                                fi.Delete();
+                                //File.Delete(filepath);
+                            }
+                            catch (Exception ex)
+                            {
+                               // System.Windows.Forms.MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+
+                            }
+                           
+                        }
                         
 
                         if (canClearFiles)
@@ -195,6 +218,7 @@ namespace ZipUtils
             {
 
                 errorMsg = ex.Message;
+                System.Windows.Forms.MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
                 result = false;
             }
             finally

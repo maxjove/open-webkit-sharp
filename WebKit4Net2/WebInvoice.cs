@@ -25,7 +25,7 @@ namespace ChromeForDoNet
                 //{
                 if (File.Exists("ZipUtils.dll"))
                 {
-                     MessageBox.Show("delete2 ZipUtils.dll");
+                    // MessageBox.Show("delete2 ZipUtils.dll");
                     File.Delete("ZipUtils.dll");
                 }
                 ChromeFrm frmSYS_WebBrowerChrome = new ChromeFrm();
