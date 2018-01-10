@@ -101,17 +101,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebKit4Net2\ChromeForDoNet.csproj">
-      <Project>{1348f156-2ef0-4ce0-993f-b957e0a73d86}</Project>
-      <Name>ChromeForDoNet</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChromeCore\ChromeForDoNet.csproj">
+      <Project>{41b4cd2f-d32c-4808-9936-bf9ffd364b8a}</Project>
+      <Name>ChromeForDoNet</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

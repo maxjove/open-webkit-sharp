@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1348F156-2EF0-4CE0-993F-B957E0A73D86}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ChromeForDoNet</RootNamespace>
-    <AssemblyName>ChromeForDoNet</AssemblyName>
+    <RootNamespace>ChromeKCore</RootNamespace>
+    <AssemblyName>ChromeKCore</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\ChromeCore\dll\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

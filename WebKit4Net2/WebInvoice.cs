@@ -3,7 +3,7 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ChromeForDoNet
+namespace ChromeKCore
 {
     public class WebInvoice
     {

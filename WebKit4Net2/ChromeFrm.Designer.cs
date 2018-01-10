@@ -1,4 +1,4 @@
-﻿namespace ChromeForDoNet
+﻿namespace ChromeKCore
 {
     partial class ChromeFrm
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.webKitBrower4Net21 = new ChromeForDoNet.WebKitBrower4Net2();
+            this.webKitBrower4Net21 = new ChromeKCore.WebKitBrower4Net2();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();

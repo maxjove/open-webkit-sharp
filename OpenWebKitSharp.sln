@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE9D4F66-6B01-4578-9E54-3C2FE36B96CA}"
 EndProject
@@ -15,13 +15,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptExample", "JavaSc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JSCore", "JavaScript\JSCore.vcxproj", "{287EEE45-1390-44D5-982F-0B96D4A077DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeForDoNet", "WebKit4Net2\ChromeForDoNet.csproj", "{1348F156-2EF0-4CE0-993F-B957E0A73D86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeKCore", "WebKit4Net2\ChromeKCore.csproj", "{1348F156-2EF0-4CE0-993F-B957E0A73D86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeInvokDemo", "ChromeInokDemo\ChromeInvokDemo.csproj", "{510F271D-4055-4A01-879E-6FC624994683}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipUtils", "ZipUtils\ZipUtils.csproj", "{189C6A40-86D7-4B25-AF77-0A959F8A13C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipDemo", "ZipDemo\ZipDemo.csproj", "{CA7D7763-7E3A-483E-801D-183FFDE8DFCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeForDoNet", "ChromeCore\ChromeForDoNet.csproj", "{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -421,6 +423,54 @@ Global
 		{CA7D7763-7E3A-483E-801D-183FFDE8DFCF}.Release|Win32.Build.0 = Release|x86
 		{CA7D7763-7E3A-483E-801D-183FFDE8DFCF}.Release|x86.ActiveCfg = Release|x86
 		{CA7D7763-7E3A-483E-801D-183FFDE8DFCF}.Release|x86.Build.0 = Release|x86
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_Linux|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_Linux|Any CPU.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_Linux|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_Linux|Mixed Platforms.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_Linux|Win32.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_Linux|Win32.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_Linux|x86.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_Linux|x86.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_NET2|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_NET2|Any CPU.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_NET2|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_NET2|Mixed Platforms.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_NET2|Win32.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_NET2|Win32.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_NET2|x86.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug_NET2|x86.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug|Win32.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Debug|x86.Build.0 = Debug|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_Linux|Any CPU.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_Linux|Any CPU.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_Linux|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_Linux|Mixed Platforms.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_Linux|Win32.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_Linux|Win32.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_Linux|x86.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_Linux|x86.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_NET2|Any CPU.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_NET2|Any CPU.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_NET2|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_NET2|Mixed Platforms.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_NET2|Win32.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_NET2|Win32.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_NET2|x86.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release_NET2|x86.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release|Win32.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release|Win32.Build.0 = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release|x86.ActiveCfg = Release|Any CPU
+		{41B4CD2F-D32C-4808-9936-BF9FFD364B8A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

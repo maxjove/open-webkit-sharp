@@ -8,13 +8,13 @@ using System.Windows.Forms;
 using WebKit.Interop;
 using WebKit;
 using System.IO;
-using ChromeForDoNet.Properties;
+using ChromeKCore.Properties;
 using System.Threading;
 using DevExpress.XtraEditors;
 
-namespace ChromeForDoNet
+namespace ChromeKCore
 {
-    public partial class ChromeFrm : XtraForm
+    internal partial class ChromeFrm : XtraForm
     {
 
        

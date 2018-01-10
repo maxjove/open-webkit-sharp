@@ -4,12 +4,12 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using WebKit;
-using ChromeForDoNet.Properties;
+using ChromeKCore.Properties;
 using ZipUtils;
 
-namespace ChromeForDoNet
+namespace ChromeKCore
 {
-  public  class WebKitBrower4Net2: WebKitBrowser
+  internal  class WebKitBrower4Net2: WebKitBrowser
     {
         static WebKitBrower4Net2()
         {
