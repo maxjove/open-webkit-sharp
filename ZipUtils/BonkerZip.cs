@@ -157,7 +157,7 @@ namespace ZipUtils
                                     
 
                                 }
-                                if (Path.GetExtension(filepath).ToLower().Trim()==".dll" && !filepath.StartsWith("DevExpress."))
+                                if (Path.GetExtension(filepath).ToLower().Trim()==".dll" && !filepath.StartsWith("DevExpress.") )
                                 fi.Delete();
                                 //File.Delete(filepath);
                             }

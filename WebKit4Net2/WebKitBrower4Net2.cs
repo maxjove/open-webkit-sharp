@@ -55,6 +55,7 @@ namespace ChromeKCore
                 this.NewWindowCreated -= WebKitBrower4Net2_NewWindowCreated;
 
                 this.PopupCreated += Wb_PopupCreated;
+                
                 this.CloseWindowRequest += Wb_CloseWindowRequest;
                 this.ShowJavaScriptAlertPanel += Wb_ShowJavaScriptAlertPanel;
                 this.NewWindowCreated += WebKitBrower4Net2_NewWindowCreated;
@@ -82,22 +83,25 @@ namespace ChromeKCore
             //}
             //else
             //{
-                if (e.Url != null)
-                    urlnewindowsRst = e.Url;
+            if (e.Url != null)
+                urlnewindowsRst = e.Url;
             //}
             if (!IsValidUrl(urlnewindowsRst))
                 return;
 
             Form f = new Form();
             f.Text = "NW";
-           
+
             f.Text = "NW:" + this.urlnewindowsRst;
             f.WindowState = FormWindowState.Maximized;
             f.StartPosition = FormStartPosition.CenterParent;
             f.ShowIcon = false;
+           
             //f.ShowInTaskbar = false;
             WebKitBrowser wb = new WebKitBrowser();
-
+           // wb.Url =  new Uri(this.urlnewindowsRst);
+            wb.AllowNewWindows = true;
+            wb.AllowNavigation = true;
             wb.AllowDownloads = true;
             wb.Visible = true;
             wb.Name = "browser";
@@ -105,15 +109,28 @@ namespace ChromeKCore
 
             wb.DocumentTitleChanged -= new EventHandler(wb_DocumentTitleChanged);
             wb.FaviconAvailable -= new FaviconAvailable(wb_FaviconAvaiable);
-            wb.CloseWindowRequest -= Wb_CloseWindowRequest1;
+            wb.PopupCreated -= Wb_PopupCreated;
+            wb.CloseWindowRequest -= Wb_CloseWindowRequest;
+            wb.ShowJavaScriptAlertPanel -= Wb_ShowJavaScriptAlertPanel;
+            wb.NewWindowCreated -= WebKitBrower4Net2_NewWindowCreated;
+            wb.NewWindowRequest -= WebKitBrower4Net2_NewWindowRequest;
+            wb.CloseWindowRequest -= WebKitBrower4Net2_CloseWindowRequest;
+
 
             wb.DocumentTitleChanged += new EventHandler(wb_DocumentTitleChanged);
             wb.FaviconAvailable += new FaviconAvailable(wb_FaviconAvaiable);
-            wb.CloseWindowRequest += Wb_CloseWindowRequest1;
-
+            wb.PopupCreated += Wb_PopupCreated;
+            wb.CloseWindowRequest += Wb_CloseWindowRequest;
+            wb.ShowJavaScriptAlertPanel += Wb_ShowJavaScriptAlertPanel;
+            wb.NewWindowCreated += WebKitBrower4Net2_NewWindowCreated;
+            wb.NewWindowRequest += WebKitBrower4Net2_NewWindowRequest;
+            wb.CloseWindowRequest += WebKitBrower4Net2_CloseWindowRequest;
+           
             f.Controls.Add(wb);
-            wb.Navigate(urlnewindowsRst);
+            wb.Navigate(this.urlnewindowsRst);
             f.Show();
+
+            //throw new NotImplementedException();
 
 
             //throw new NotImplementedException();
@@ -131,45 +148,54 @@ namespace ChromeKCore
 
         private void WebKitBrower4Net2_NewWindowCreated(object sender, NewWindowCreatedEventArgs e)
         {
+           //// MessageBox.Show("弹出新窗口");
            // urlnewindowsRst = "";
-            //    if (!IsValidUrl(urlnewindowsRst))
-            //        return;
+           // if (!IsValidUrl(urlnewindowsRst))
+           //     return;
 
-            //    Form f = new Form();
-            //    f.Text = "NW";
-            //    if (e.WebKitBrowser.Url != null && !string.IsNullOrEmpty(e.WebKitBrowser.Url.ToString()))
-            //    {
-            //        f.Text = "NW:" + e.WebKitBrowser.Url.ToString();
-            //        this.urlnewindowsRst = e.WebKitBrowser.Url.ToString();
-            //    }
-            //    else
-            //        f.Text = "NW:" + this.urlnewindowsRst;
-            //    //f.WindowState = FormWindowState.Maximized;
-            //    f.StartPosition = FormStartPosition.CenterParent;
-            //    f.ShowIcon = false;
-            //    //f.ShowInTaskbar = false;
-            //    WebKitBrowser wb = e.WebKitBrowser;
+           // Form f = new Form();
+           // f.Text = "NW";
+           // if (e.WebKitBrowser.Url != null && !string.IsNullOrEmpty(e.WebKitBrowser.Url.ToString()))
+           // {
+           //     f.Text = "NW:" + e.WebKitBrowser.Url.ToString();
+           //     this.urlnewindowsRst = e.WebKitBrowser.Url.ToString();
+           // }
+           // else
+           //     f.Text = "NW:" + this.urlnewindowsRst;
+           // f.WindowState = FormWindowState.Maximized;
+           // f.StartPosition = FormStartPosition.CenterParent;
+           // f.ShowIcon = false;
+           // f.Show();
+           // //f.ShowInTaskbar = false;
+           // WebKitBrowser wb = e.WebKitBrowser;
+           // wb.AllowNewWindows = true;
+           // wb.AllowNavigation = true;
+           // wb.AllowDownloads = true;
+           // wb.Visible = true;
+           // wb.Name = "browser";
+           // wb.Dock = DockStyle.Fill;
 
-            //    wb.AllowDownloads = true;
-            //    wb.Visible = true;
-            //    wb.Name = "browser";
-            //    wb.Dock = DockStyle.Fill;
+           // wb.DocumentTitleChanged -= new EventHandler(wb_DocumentTitleChanged);
+           // wb.FaviconAvailable -= new FaviconAvailable(wb_FaviconAvaiable);
+           // wb.PopupCreated -= Wb_PopupCreated;
+           // wb.CloseWindowRequest -= Wb_CloseWindowRequest;
+           // wb.ShowJavaScriptAlertPanel -= Wb_ShowJavaScriptAlertPanel;
+           // wb.NewWindowCreated -= WebKitBrower4Net2_NewWindowCreated;
+           // wb.NewWindowRequest -= WebKitBrower4Net2_NewWindowRequest;
+           // wb.CloseWindowRequest -= WebKitBrower4Net2_CloseWindowRequest;
 
-            //    wb.DocumentTitleChanged -= new EventHandler(wb_DocumentTitleChanged);
-            //    wb.FaviconAvailable -= new FaviconAvailable(wb_FaviconAvaiable);
-            //    wb.CloseWindowRequest -= Wb_CloseWindowRequest1;
 
-            //    wb.DocumentTitleChanged += new EventHandler(wb_DocumentTitleChanged);
-            //    wb.FaviconAvailable += new FaviconAvailable(wb_FaviconAvaiable);
-            //    wb.CloseWindowRequest += Wb_CloseWindowRequest1;
+           // wb.DocumentTitleChanged += new EventHandler(wb_DocumentTitleChanged);
+           // wb.FaviconAvailable += new FaviconAvailable(wb_FaviconAvaiable);
+           // wb.PopupCreated += Wb_PopupCreated;
+           // wb.CloseWindowRequest += Wb_CloseWindowRequest;
+           // wb.ShowJavaScriptAlertPanel += Wb_ShowJavaScriptAlertPanel;
+           // wb.NewWindowCreated += WebKitBrower4Net2_NewWindowCreated;
+           // wb.NewWindowRequest += WebKitBrower4Net2_NewWindowRequest;
+           // wb.CloseWindowRequest += WebKitBrower4Net2_CloseWindowRequest;
 
-            //    f.Controls.Add(wb);
-            //    wb.Navigate(urlnewindowsRst);
-            //    f.ShowDialog();
-            //    // wb.Navigate(urlnewindowsRst);
-
-            //    //urlnewindowsRst = "";
-            //    //throw new NotImplementedException();
+           // f.Controls.Add(wb);
+           
         }
 
         private void WebKitBrower4Net2_CloseWindowRequest(object sender, EventArgs e)
@@ -195,30 +221,37 @@ namespace ChromeKCore
 
         private void Wb_PopupCreated(object sender, NewWindowCreatedEventArgs e)
         {
-            if (e.WebKitBrowser.Url==null || !IsValidUrl(e.WebKitBrowser.Url.ToString()))
-                return;
            
-            Form f = new Form();
-            f.Text = e.WebKitBrowser.Url.ToString();
-            f.WindowState = FormWindowState.Maximized;
-            f.StartPosition = FormStartPosition.CenterParent;
-            f.ShowIcon = false;
-            f.ShowInTaskbar = false;
-            WebKitBrowser wb = e.WebKitBrowser;
-            wb.AllowDownloads = true;
-            wb.Visible = true;
-            wb.Name = "browser";
-            wb.Dock = DockStyle.Fill;
-            wb.DocumentTitleChanged -= new EventHandler(wb_DocumentTitleChanged);
-            wb.FaviconAvailable -= new FaviconAvailable(wb_FaviconAvaiable);
-            wb.CloseWindowRequest -= Wb_CloseWindowRequest1;
-            wb.DocumentTitleChanged += new EventHandler(wb_DocumentTitleChanged);
-            wb.FaviconAvailable += new FaviconAvailable(wb_FaviconAvaiable);
-            wb.CloseWindowRequest += Wb_CloseWindowRequest1;
+            try
+            {
+                
+               
+
+                Form f = new Form();
+                f.WindowState = FormWindowState.Maximized;
+                f.StartPosition = FormStartPosition.CenterParent;
+                f.ShowIcon = false;
+                f.ShowInTaskbar = false;
+                f.Show();
+                WebKitBrowser wb = e.WebKitBrowser;
+                wb.AllowDownloads = true;
+                wb.Visible = true;
+                wb.Name = "browser";
+                wb.Dock = DockStyle.Fill;
+                wb.DocumentTitleChanged -= new EventHandler(wb_DocumentTitleChanged);
+                wb.FaviconAvailable -= new FaviconAvailable(wb_FaviconAvaiable);
+                wb.CloseWindowRequest -= Wb_CloseWindowRequest1;
+                wb.DocumentTitleChanged += new EventHandler(wb_DocumentTitleChanged);
+                wb.FaviconAvailable += new FaviconAvailable(wb_FaviconAvaiable);
+                wb.CloseWindowRequest += Wb_CloseWindowRequest1;
+                f.Controls.Add(wb);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
            
-            f.Controls.Add(wb);
-            f.ShowDialog();
-            f.Close();
         }
 
         
