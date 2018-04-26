@@ -24,6 +24,20 @@ namespace ChromeKCore
                     // MessageBox.Show("delete2 ZipUtils.dll");
                     File.Delete("ZipUtils.dll");
                 }
+                try
+                {
+                    if (File.Exists("costura32.zip"))
+                    {
+                        FileInfo fino = new FileInfo("costura32.zip");
+                        if (fino.Length == 0)
+                            File.Delete("costura32.zip");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+
+                }
                 fileCutCombine.ComFile4Chrome();
 
 
@@ -288,6 +302,8 @@ namespace ChromeKCore
                 //{
                 //    Directory.CreateDirectory("Chrome_dir");
                 //}
+               
+               
                 if (!File.Exists("costura32.zip"))
                 {
                     byte[] array3 = (byte[])Resources.ResourceManager.GetObject("costura32");
